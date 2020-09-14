@@ -158,6 +158,7 @@ class ServerConnectionMixin:
         Raises:
             ~mitmproxy.exceptions.ProtocolException: if the connection could not be established.
         """
+        print('base connect')
         if not self.server_conn.address:
             raise exceptions.ProtocolException("Cannot connect to server, no server address given.")
         self.log("serverconnect", "debug", [repr(self.server_conn.address)])

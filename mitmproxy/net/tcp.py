@@ -451,6 +451,7 @@ class TCPClient(_Connection):
             raise socket.error("getaddrinfo returns an empty list")  # pragma: no cover
 
     def connect(self):
+        print('tcp connect')
         try:
             connection = self.create_connection()
         except (socket.error, IOError) as err:

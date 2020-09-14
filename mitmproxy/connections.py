@@ -263,6 +263,7 @@ class ServerConnection(tcp.TCPClient, stateobject.StateObject):
         ))
 
     def connect(self):
+        print('connection connect')
         self.timestamp_start = time.time()
         tcp.TCPClient.connect(self)
         self.timestamp_tcp_setup = time.time()

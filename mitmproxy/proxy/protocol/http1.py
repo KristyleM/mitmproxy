@@ -79,5 +79,6 @@ class Http1Layer(httpbase._HttpTransmissionLayer):
         return close_connection
 
     def __call__(self):
+        print('In http1 layer')
         layer = httpbase.HttpLayer(self, self.mode)
         layer()

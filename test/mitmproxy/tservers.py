@@ -199,6 +199,7 @@ class LazyPathoc(pathod.pathoc.Pathoc):
         pathod.pathoc.Pathoc.__init__(self, *args, **kwargs)
 
     def connect(self):
+        print('tservers connect')
         return pathod.pathoc.Pathoc.connect(self, self.lazy_connect)
 
 

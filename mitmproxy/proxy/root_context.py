@@ -47,7 +47,7 @@ class RootContext:
         except exceptions.TcpException as e:
             raise exceptions.ProtocolException(str(e))
         client_tls = tls.is_tls_record_magic(d)
-
+        print('Start root_context, current layer is: %s' % top_layer.__class__.__name__)
         # 1. check for filter
         if self.config.check_filter:
             is_filtered = self.config.check_filter(top_layer.server_conn.address)

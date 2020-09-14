@@ -299,6 +299,7 @@ class Pathoc(tcp.TCPClient):
             connect_to: A (host, port) tuple, which will be connected to with
             an HTTP CONNECT request.
         """
+        print('pathoc connect')
         if self.use_http2 and not self.ssl:
             raise NotImplementedError("HTTP2 without SSL is not supported.")
 

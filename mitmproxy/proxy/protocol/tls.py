@@ -236,6 +236,10 @@ class TlsLayer(base.Layer):
         An additional complexity is that we need to mirror SNI and ALPN from the client when connecting to the server.
         We manually peek into the connection and parse the ClientHello message to obtain these values.
         """
+        from mitmproxy.proxy import protocol
+        # if isinstance(self.ctx, protocol.HttpLayer):
+        #     import ipdb
+        #     ipdb.set_trace()
         if self._client_tls:
             # Peek into the connection, read the initial client hello and parse it to obtain SNI and ALPN values.
             try:
@@ -295,6 +299,7 @@ class TlsLayer(base.Layer):
             return "TlsLayer(inactive)"
 
     def connect(self):
+        print('protocol/tls connect')
         if not self.server_conn.connected():
             self.ctx.connect()
         if self._server_tls and not self.server_conn.tls_established:
@@ -354,6 +359,8 @@ class TlsLayer(base.Layer):
 
     def _establish_tls_with_client_and_server(self):
         try:
+            import ipdb
+            ipdb.set_trace()
             self.ctx.connect()
             self._establish_tls_with_server()
         except Exception:
@@ -442,6 +449,8 @@ class TlsLayer(base.Layer):
 
             args = net_tls.client_arguments_from_options(self.config.options)
             args["cipher_list"] = ciphers_server
+            import ipdb
+            ipdb.set_trace()
             self.server_conn.establish_tls(
                 sni=self.server_sni,
                 alpn_protos=alpn,
